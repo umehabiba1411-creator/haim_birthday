@@ -679,6 +679,7 @@ button:focus-visible, input:focus-visible {
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin: 10px 0 20px;
+   width: 100%;
 }
 
 .photo-card {
