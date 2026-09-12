@@ -11,7 +11,7 @@
    you want. Keep the quotes around it.
    Example: const SECRET_PASSCODE = "haim2024";
 --------------------------------------------------------- */
-const SECRET_PASSCODE = "CHANGE_ME";
+const SECRET_PASSCODE = "1324";
 
 
 /* ---------------------------------------------------------
