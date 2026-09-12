@@ -850,3 +850,67 @@ button:focus-visible, input:focus-visible {
 @media (min-width: 900px) {
   .scene-content { max-width: 720px; }
 }
+/* =========================
+   CAKE & CANDLE ANIMATION
+   ========================= */
+
+#cake {
+  display: block;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: -10.5em auto 0 auto;
+  scale: 1.1;
+  animation: cakeIn 500ms 1s ease-out forwards;
+}
+
+/* Candle flame */
+.candle:after {
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 0;
+  width: 12px;
+  height: 20px;
+  border-radius: 50%;
+  animation: fuego 2s 1.5s infinite ease-in-out;
+}
+
+/* Small candle detail */
+.candle:before {
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 0;
+}
+
+/* Cake entrance */
+@keyframes cakeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Flickering flame */
+@keyframes fuego {
+  0%, 100% {
+    transform: scale(1) rotate(-3deg);
+  }
+
+  25% {
+    transform: scale(1.08) rotate(3deg);
+  }
+
+  50% {
+    transform: scale(0.92) rotate(-2deg);
+  }
+
+  75% {
+    transform: scale(1.05) rotate(2deg);
+  }
+}
