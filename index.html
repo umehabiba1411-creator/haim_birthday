@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Haim! 🎂✨</title>
+
+<!-- Google Fonts: a whimsical script for headlines, a soft rounded sans for body text -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ======================================================
+       BACKGROUND CANVAS LAYERS (stars / particles live here)
+       These are filled in automatically by script.js
+  ======================================================= -->
+  <div class="bg-stars" id="bgStars"></div>
+  <div class="bg-particles" id="bgParticles"></div>
+
+  <!-- ======================================================
+       1. PASSCODE SCREEN
+  ======================================================= -->
+  <section id="passcodeScreen" class="screen passcode-screen">
+    <div class="floating-hearts" id="passcodeHearts"></div>
+
+    <div class="passcode-card" id="passcodeCard">
+      <div class="passcode-icon">🎁</div>
+      <h1 class="passcode-title">A Secret Birthday Awaits</h1>
+      <p class="passcode-subtitle">Enter the magic word to unlock it</p>
+
+      <input
+        type="password"
+        id="passcodeInput"
+        class="passcode-input"
+        placeholder="✨ passcode ✨"
+        autocomplete="off"
+      >
+
+      <!-- Little glowing dots that fill up as you type, purely decorative -->
+      <div class="pin-dots" id="pinDots"></div>
+
+      <!-- Optional tap-to-type keypad, handy on phones -->
+      <div class="keypad" id="keypad">
+        <button class="key" data-key="1">1</button>
+        <button class="key" data-key="2">2</button>
+        <button class="key" data-key="3">3</button>
+        <button class="key" data-key="4">4</button>
+        <button class="key" data-key="5">5</button>
+        <button class="key" data-key="6">6</button>
+        <button class="key" data-key="7">7</button>
+        <button class="key" data-key="8">8</button>
+        <button class="key" data-key="9">9</button>
+        <button class="key key-icon" data-key="clear">✕</button>
+        <button class="key" data-key="0">0</button>
+        <button class="key key-icon" data-key="back">⌫</button>
+      </div>
+
+      <button id="passcodeButton" class="btn btn-primary">Enter 💫</button>
+
+      <p id="passcodeMessage" class="passcode-message"></p>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       2. UNLOCK ANIMATION OVERLAY (plays once, then reveals story)
+  ======================================================= -->
+  <div id="unlockOverlay" class="unlock-overlay">
+    <div class="unlock-burst"></div>
+    <p class="unlock-text">Unlocking your surprise... ✨</p>
+  </div>
+
+  <!-- ======================================================
+       MAIN BIRTHDAY STORY (hidden until passcode is correct)
+  ======================================================= -->
+  <main id="storyContainer" class="story-container">
+
+    <!-- ---------- SCENE 1 — MAGICAL INTRO ---------- -->
+    <section class="screen scene" id="scene1" data-scene="1">
+      <div class="scene-content">
+        <div class="gift-box" id="giftBox">
+          <div class="gift-lid"></div>
+          <div class="gift-base"></div>
+          <div class="gift-ribbon-v"></div>
+          <div class="gift-ribbon-h"></div>
+        </div>
+        <p class="scene-eyebrow">once upon a birthday</p>
+        <h2 class="scene-title">Someone special has a birthday today... 🎁</h2>
+        <p class="turns-badge">Haim turns 2! 🎈</p>
+        <button class="btn btn-primary next-btn" data-next="scene2">Open Your Surprise ✨</button>
+      </div>
+    </section>
+
+    <!-- ---------- SCENE 2 — BIRTHDAY CAKE ---------- -->
+    <section class="screen scene" id="scene2" data-scene="2">
+      <div class="scene-content">
+        <div class="cake-wrap" id="cakeWrap">
+          <div class="candle">
+            <div class="flame"></div>
+            <div class="wick"></div>
+          </div>
+          <div class="cake-top"></div>
+          <div class="cake-drip"></div>
+          <div class="cake-middle"></div>
+          <div class="cake-bottom"></div>
+        </div>
+        <h2 class="scene-title">Happy Birthday, Haim! 🎂✨</h2>
+        <button class="btn btn-primary next-btn" id="wishBtn" data-next="scene3">Make a Wish 🌟</button>
+      </div>
+    </section>
+
+    <!-- ---------- SCENE 3 — FLOWERS ---------- -->
+    <section class="screen scene" id="scene3" data-scene="3">
+      <div class="scene-content">
+        <div class="moon"></div>
+        <div class="bouquet" id="bouquet">
+          <!-- flowers are generated in script.js -->
+        </div>
+        <h2 class="scene-title">Flowers for the sweetest Haim 🌷💜</h2>
+        <button class="btn btn-primary next-btn" data-next="sceneHeart">There's More 💌</button>
+      </div>
+    </section>
+
+    <!-- ---------- SCENE 3.5 — A HEART FULL OF LOVE ---------- -->
+    <section class="screen scene" id="sceneHeart" data-scene="heart">
+      <div class="scene-content">
+        <div class="text-heart" id="textHeart"><!-- filled by script.js --></div>
+        <h2 class="scene-title small-title">A Heart Full of Love 💗</h2>
+        <p class="tap-hint">tap anywhere to send a little heart 💕</p>
+        <button class="btn btn-primary next-btn" data-next="scene4">Continue 💌</button>
+      </div>
+    </section>
+
+    <!-- ---------- SCENE 4 — LOVE LETTER ---------- -->
+    <section class="screen scene" id="scene4" data-scene="4">
+      <div class="scene-content">
+        <h2 class="scene-title small-title">For Haim 💌</h2>
+
+        <div class="envelope" id="envelope">
+          <div class="envelope-back"></div>
+          <div class="letter" id="letter">
+            <p>
+              Happy Birthday, Haim! You bring so much happiness and love
+              into our lives. May your little world always be filled with
+              smiles, laughter, beautiful memories and countless blessings.
+              Keep shining and keep being your wonderful self. ❤️
+            </p>
+          </div>
+          <div class="envelope-flap"></div>
+          <div class="envelope-front"></div>
+          <div class="envelope-seal">💌</div>
+        </div>
+
+        <button class="btn btn-secondary" id="openLetterBtn">Open Letter 💌</button>
+        <button class="btn btn-primary next-btn hidden" id="letterNextBtn" data-next="scene5">Read One More ✨</button>
+      </div>
+    </section>
+
+    <!-- ---------- SCENE 5 — HEART & MESSAGE ANIMATION ---------- -->
+    <section class="screen scene heart-scene" id="scene5" data-scene="5">
+      <div class="scene-content">
+        <div class="message-stack" id="messageStack">
+          <p class="floating-message">You are precious. ❤️</p>
+          <p class="floating-message">Keep smiling. ✨</p>
+          <p class="floating-message">Keep dreaming. 🌙</p>
+          <p class="floating-message">Always stay happy. 🌸</p>
+        </div>
+        <p class="tap-hint">💗 Tap anywhere on this screen for a little heart 💗</p>
+        <button class="btn btn-primary next-btn" data-next="scene6">Our Memories 📸</button>
+      </div>
+    </section>
+
+    <!-- ---------- SCENE 6 — MEMORIES GALLERY ---------- -->
+    <section class="screen scene" id="scene6" data-scene="6">
+      <div class="scene-content">
+        <p class="scene-eyebrow">little moments, big love</p>
+        <h2 class="scene-title small-title">Memories with Haim 📸</h2>
+
+        <div class="gallery" id="gallery">
+          <div class="photo-card"><img src="images/photo1.jpg" alt="Memory 1" onerror="this.parentElement.classList.add('empty')"></div>
+          <div class="photo-card"><img src="images/photo2.jpg" alt="Memory 2" onerror="this.parentElement.classList.add('empty')"></div>
+          <div class="photo-card"><img src="images/photo3.jpg" alt="Memory 3" onerror="this.parentElement.classList.add('empty')"></div>
+          <div class="photo-card"><img src="images/photo4.jpg" alt="Memory 4" onerror="this.parentElement.classList.add('empty')"></div>
+          <div class="photo-card"><img src="images/photo5.jpg" alt="Memory 5" onerror="this.parentElement.classList.add('empty')"></div>
+          <div class="photo-card"><img src="images/photo6.jpg" alt="Memory 6" onerror="this.parentElement.classList.add('empty')"></div>
+        </div>
+
+        <button class="btn btn-primary next-btn" data-next="scene7">One Last Surprise 🎉</button>
+      </div>
+    </section>
+
+    <!-- ---------- SCENE 7 — FINAL BIRTHDAY SURPRISE ---------- -->
+    <section class="screen scene" id="scene7" data-scene="7">
+      <div class="scene-content">
+        <div class="balloons" id="balloons"></div>
+        <div class="mini-cake">🎂</div>
+        <h2 class="scene-title">Happy Birthday, Haim! ❤️🎂</h2>
+        <p class="final-message">May your life always be filled with happiness, love, laughter and beautiful moments.</p>
+        <button class="btn btn-primary" id="restartBtn">Celebrate Again 🎉</button>
+
+        <div class="music-controls">
+          <button id="playMusicBtn" class="btn btn-ghost">▶ Play Music</button>
+          <button id="pauseMusicBtn" class="btn btn-ghost hidden">⏸ Pause Music</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="credit">
+      <p>Made with <span class="heart-pulse">❤️</span> by Um-e-Habiba</p>
+    </footer>
+
+  </main>
+
+  <!-- Progress dots showing where you are in the story -->
+  <div class="scene-progress" id="sceneProgress"></div>
+
+  <!-- Optional background music. Put your own mp3 in the music/ folder. -->
+  <audio id="bgMusic" src="music/birthday-song.mp3" loop></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
